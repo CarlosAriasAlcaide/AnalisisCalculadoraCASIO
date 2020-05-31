@@ -1,0 +1,29 @@
+from math import floor
+from Auxiliar import *
+
+def Es_Residuo_Cuadratico(q, n):
+    for i in range(n+1):
+        x = sqrt(q + n*i)
+        if floor(x) == x:
+            return True
+
+    return False
+
+def Residuos_Cuadraticos(n):
+    residuos = set()
+    for i in range(1,floor(n/2)+1):
+        residuos.add((i*i)%n)
+
+    return residuos
+
+def Criba_Cuadratica(n):
+
+    B = floor( sqrt(n) )
+    P = set(Eratostenes(B)) #Genera conjunto de primos
+    residuos = Residuos_Cuadraticos(n) #Genera los residuos cuadraticos
+
+    fb = residuos & P #La interseccion es la base donde se factoriza
+
+    # Faltaria terminar, ver memoria de TFM
+
+    return fb
