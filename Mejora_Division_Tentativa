@@ -1,0 +1,33 @@
+from Auxiliar import *
+
+def Division_Tentativa_Actual(n):
+    P = Eratostenes(1000)
+
+    for p in P:
+        if n % p == 0:  # Resto de n entre p igual a 0
+            return p
+
+    return [n]
+
+def Division_Tentativa_Mejora(n):
+    P = Eratostenes(1000)
+
+    for p in P:
+        if n % p == 0:  # Resto de n entre p igual a 0
+            return p
+
+    if n < 1000000:
+        return n
+
+    return [n]
+
+def Factorizar_Potencia(n):
+    base = int(n.split('^')[0])
+    exponente = int(n.split('^')[1])
+    factorizacion_base = base_exponente(factorizacion_completa(base, Division_Tentativa))
+
+    B = factorizacion_base[0]
+    E = factorizacion_base[1]
+    E_M = [item * exponente for item in E]
+
+    return B, E_M
