@@ -1,6 +1,5 @@
 from math import floor
 from Auxiliar import *
-#COMPROBADO, FUNCIONA CORRECTAMENTE Y QUEDA POR TERMINAR
 
 def Terminos_Fraccion_Continua(x,k):
     fc=[]
