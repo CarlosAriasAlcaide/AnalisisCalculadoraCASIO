@@ -1,0 +1,58 @@
+from math import floor
+from Auxiliar import *
+#COMPROBADO, FUNCIONA CORRECTAMENTE Y QUEDA POR TERMINAR
+
+def Terminos_Fraccion_Continua(x,k):
+    fc=[]
+    q=floor(x)
+    fc.append(q)
+    x=x-q
+
+    i=0
+    while x != 0 and i < k:
+        q=floor(1/x)
+        fc.append(q)
+        x=1/x-q
+        i=i+1
+
+    return fc
+
+
+def Convergentes_Fraccion(fc):
+    P = []
+    Q = []
+
+    P.append(fc[0])
+    Q.append(1)
+    P.append(fc[0] * fc[1] + 1)
+    Q.append(fc[1])
+
+    i = 2
+    while i <= len(fc)-1:
+        P.append(fc[i]*P[i-1]+P[i-2])
+        Q.append(fc[i]*Q[i-1]+Q[i-2])
+        i=i+1
+
+    return (P, Q)
+
+
+def Fracciones_Continuas(n, k):
+    W_list = []
+    L = floor( sqrt(n) )
+    fb = Eratostenes( L )
+    tam = len(fb)
+
+    fc = Terminos_Fraccion_Continua( sqrt(n), k)
+
+    convergentes = Convergentes_Fraccion(fc)
+    P = convergentes[0]
+    Q = convergentes[1]
+
+    for i in range(k+1):
+        w_i = P[i]*P[i] - Q[i]*Q[i]*n
+        while (w_i es suave en la base fb) and len(W_list) <= tam:
+            W_list.append(w_i)
+    
+    # Faltaria por terminar ver memoria de TFM
+    
+    return W_list
