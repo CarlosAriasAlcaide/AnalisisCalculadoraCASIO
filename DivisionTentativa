@@ -1,0 +1,6 @@
+def Division_Tentativa(n):
+	P=range(2, n+1, 1)
+
+	for p in P:
+		if n%p == 0: # Resto de n entre p igual a 0
+			return p
