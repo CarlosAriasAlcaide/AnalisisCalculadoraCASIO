@@ -1,0 +1,65 @@
+from math import sqrt
+
+def mcd(a,b): #Algoritmo de Euclides para el maximo comun divisor
+	if b == 0:
+		return a
+	elif a >= b:
+		return mcd(b,a % b)
+	else:
+		return mcd(b,a)
+
+def Eratostenes(n):
+	P = list(range(2,n+1))
+
+	i = 2
+	while i <= int( sqrt(n) ):
+		if i in P:
+			M = range(i*2, n+1, i)
+			for j in M:
+				if j in P:
+					P.remove(j)
+		i = i + 1
+	return P
+
+def factorizacion_completa(n, metodo):
+	F = []
+
+	while n != 1:
+		p = metodo(n)
+		if type(p)!=list:
+			F.append(p)
+			n = n // p
+		else:
+			return p
+
+	return F
+
+def base_exponente(factorizacion):
+	if len(factorizacion)==1:
+		return factorizacion
+
+	B = list(set(factorizacion))
+	conjunto_bases = list(set(factorizacion))
+	E = []
+
+	while len(conjunto_bases) > 0:
+		expo = factorizacion.count(conjunto_bases[0])
+		E.append(expo)
+		conjunto_bases.remove(conjunto_bases[0])
+
+	return B, E
+
+def cambiar_representacion_factorizacion(bases_exponentes):
+	if len(bases_exponentes)==1:
+		return bases_exponentes
+
+	bases = bases_exponentes[0]
+	exponentes = bases_exponentes[1]
+	expresion = ''
+	i = 0
+	while i < len(bases):
+		expresion = expresion + str(bases[i]) + '^' + str(exponentes[i]) + 'x'
+		i = i + 1
+
+	return expresion[:len(expresion)-1]
+
