@@ -1,0 +1,17 @@
+from Auxiliar import *
+
+def f_c(x, c, n):
+	return (x * x + c) % n
+
+def rho_Pollard(n):
+    a, b, c, d = 2, 2, 1, 1
+
+    while d == 1 or d == n:
+        a = f_c(a, c, n)
+        b = f_c(f_c(b, c, n), c, n)
+        d = mcd( abs(a-b), n)
+
+        if d == n:
+            return n #Devuelve el propio numero si no puede descomponerlo
+
+    return d
