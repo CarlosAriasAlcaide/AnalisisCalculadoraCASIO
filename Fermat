@@ -1,0 +1,11 @@
+from math import sqrt, ceil, floor
+
+def Fermat(n):
+    a=ceil( sqrt( n ) )
+    b=a*a-n
+
+    while sqrt(b) != floor(sqrt(b)):  # Condicion para que b sea cuadrado
+        a=a+1
+        b=a*a-n
+
+    return int(a+sqrt(b))
