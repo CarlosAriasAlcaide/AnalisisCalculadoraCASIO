@@ -1,0 +1,22 @@
+from math import sqrt,log,floor
+from random import randint
+from Auxiliar import *
+
+def rho_menos1_Pollard(n):
+	B = floor(sqrt(n))
+	P = Eratostenes (B) # Genera lista de primos menores que B
+
+	M = 1
+	for q in P:
+		exponente=floor( log(B, q))
+		M=M*(q**exponente)
+	print(M)
+	a = randint(2, B) # Se elige a coprimo con n
+	while mcd(a,n) != 1:
+		a = randint(2, B)
+
+	g = mcd((a**M)-1,n)
+	if  g== 1 or g == n: #Cuando no encuentra un factor no trivial, devuelve el propio numero
+		return n
+
+	return g
